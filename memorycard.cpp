@@ -58,14 +58,6 @@ int main()
       nums.erase(nums.begin() + index);
     }
   }
-  for(int i = 0; i < 4; i++)
-  {
-    for(int j = 0; j < 4; j++)
-    {
-      cout<<card[i][j];
-    }
-    cout<<endl;
-  }
 
   //play game
   while(foundPairs != 8)
