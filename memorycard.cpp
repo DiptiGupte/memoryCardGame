@@ -66,9 +66,66 @@ int main()
     int ientry1, ientry2;
     cout<<"Enter the first card you would like to pick (put a space between the uppercase letter and number): ";
     cin>>centry1>>ientry1;
+    //checking to see if vaid entry
+    bool isValid = false;
+    while(!isValid)
+    {
+      if(centry1 != 'A' && centry1 != 'B' & centry1 != 'C' && centry1 != 'D')
+      {
+        cout<<"Invalid column. Please pick a card from A to D: ";
+        cin>>centry1>>ientry1;
+      }
+      else if(ientry1 != 1 && ientry1 != 2 && ientry1 != 3 && ientry1 != 4)
+      {
+        cout<<"Invalid row. Please pick a card from 1 to 4: ";
+        cin>>centry1>>ientry1;
+      }
+      //if the card is already turned over
+      else if(board[ientry1 - 1][centry1 - '0' - 17] != '*')
+      {
+        cout<<"This card already has a found pair. Please pick again: ";
+        cin>>centry1>>ientry1;
+      }
+      else
+      {
+        isValid = true;
+      }
+    }
     cout<<"Enter the second card you would like to pick (put a space between the uppercase letter and number): ";
     cin>>centry2>>ientry2;
-    //doing centry1 - '0' - 17 and centry2 - '0' - 17 to get the int values of the locations given
+    //checking to see if vaid entry
+    //checking to see if vaid entry
+    bool isValid2 = false;
+    while(!isValid2)
+    {
+      if(centry2 != 'A' && centry2 != 'B' & centry2 != 'C' && centry2 != 'D')
+      {
+        cout<<"Invalid column. Please pick a card from A to D: ";
+        cin>>centry2>>ientry2;
+      }
+      else if(ientry2 != 1 && ientry2 != 2 && ientry2 != 3 && ientry2 != 4)
+      {
+        cout<<"Invalid row. Please pick a card from 1 to 4: ";
+        cin>>centry2>>ientry2;
+      }
+      //if the card is already turned over
+      else if(board[ientry2 - 1][centry2 - '0' - 17] != '*')
+      {
+        cout<<"This card already has a found pair. Please pick again: ";
+        cin>>centry2>>ientry2;
+      }
+      //pick the same card again
+      else if((centry2 == centry1) && (ientry2 == ientry1))
+      {
+        cout<<"You have already selected this card. Please pick a different card: ";
+        cin>>centry2>>ientry2;
+      }
+      else
+      {
+        isValid2 = true;
+      }
+    }
+    //using centry1 - '0' - 17 and centry2 - '0' - 17 to get the int values of the locations given
     cout<<"You picked "<<card[ientry1 - 1][centry1 - '0' - 17]<<" and "<<card[ientry2 - 1][centry2 - '0' - 17]<<endl;
     //if picked matching cards
     if(card[ientry1 - 1][centry1 - '0' - 17] == card[ientry2 - 1][centry2 - '0' - 17])
